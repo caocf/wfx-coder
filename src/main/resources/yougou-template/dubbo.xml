@@ -1,0 +1,21 @@
+<#assign className = table.className>   
+<#assign classNameLower = className?uncap_first>
+<#assign bgApi = className?uncap_first+"BackgroundApi">
+<#assign frontApi = className?uncap_first+"FrontApi">
+	<!-- dubbo configuration -->
+	<!-- wfx-admin system -->
+	<!-- ${table.tableAlias}api -->
+	<!-- backgroundApi -->
+	<dubbo:reference id="${bgApi}" url="dubbo://127.0.0.1:22880" interface="${basepackage}.${module}.api.background.I${className}BackgroundApi" timeout="10000" check="false" version="1.0" protocol="dubbo" />
+	<!-- frontApi -->
+	<dubbo:reference id="${frontApi}" url="dubbo://127.0.0.1:22880" interface="${basepackage}.${module}.api.front.I${className}FrontApi" timeout="10000" check="false" version="1.0" protocol="dubbo" />
+	
+	<!-- ========================================================================================== -->
+	
+	<!-- wfx-core system -->
+	<!-- ${table.tableAlias}api -->
+	<!-- backgroundApi -->
+	<dubbo:service interface="${basepackage}.${module}.api.background.I${className}BackgroundApi" version="1.0" ref="${bgApi}Impl" timeout="10000" />
+	<!-- frontApi -->
+	<dubbo:service interface="${basepackage}.${module}.api.front.I${className}FrontApi" version="1.0" ref="${frontApi}Impl" timeout="10000" />
+

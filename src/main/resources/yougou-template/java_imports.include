@@ -1,0 +1,11 @@
+import java.util.*;
+
+import javacommon.base.*;
+import javacommon.util.*;
+
+import ${basepackage}.model.${table.className};
+
+/**
+ * @author ${author}
+ * @Date 创建时间：${now?string('yyyy-MM-dd HH:mm:ss')}
+ */
